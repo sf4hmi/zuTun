@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CategoryViewController.swift
 //  zuTun
 //
 //  Created by Fahmi Sulaiman on 30.01.18.
@@ -7,19 +7,68 @@
 //
 
 import UIKit
+import CoreData
 
 class CategoryViewController: UITableViewController {
 
+    var categoryArray = [Category]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tableView.rowHeight = 60.0
+        //addInitialCategories()
+        loadCategory()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK:- TableView Datasource Methods
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoryArray.count
     }
-
-
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
+        
+        cell.textLabel?.text = categoryArray[indexPath.row].name
+        
+        return cell
+    }
+    
+    // MARK:- TableView Delegate Methods
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK:- Test Methods
+    func addInitialCategories() {
+        let category1 = Category(context: self.context)
+        category1.name = "Personal"
+        categoryArray.append(category1)
+        
+        let category2 = Category(context: self.context)
+        category2.name = "Shopping List"
+        categoryArray.append(category2)
+        
+        saveCategory()
+    }
+    
+    // MARK:- Data Manipulation Methods
+    func saveCategory() {
+        do {
+            try context.save()
+        } catch {
+            print("Saving categories failed!: \(error)")
+        }
+        tableView.reloadData()
+    }
+    
+    func loadCategory(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
+        do {
+            categoryArray = try context.fetch(request)
+        } catch {
+            print("Loading categories failed!: \(error)")
+        }
+    }
 }
 
