@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		99579EC0202107AF004118FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99579EBF202107AF004118FC /* AppDelegate.swift */; };
-		99579EC2202107AF004118FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99579EC1202107AF004118FC /* ViewController.swift */; };
+		99579EC2202107AF004118FC /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99579EC1202107AF004118FC /* CategoryViewController.swift */; };
 		99579EC5202107AF004118FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99579EC3202107AF004118FC /* Main.storyboard */; };
 		99579EC8202107AF004118FC /* zuTun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99579EC6202107AF004118FC /* zuTun.xcdatamodeld */; };
 		99579ECA202107AF004118FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99579EC9202107AF004118FC /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		99579EBC202107AF004118FC /* zuTun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zuTun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99579EBF202107AF004118FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99579EC1202107AF004118FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		99579EC1202107AF004118FC /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		99579EC4202107AF004118FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99579EC7202107AF004118FC /* zuTun.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = zuTun.xcdatamodel; sourceTree = "<group>"; };
 		99579EC9202107AF004118FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				99579EBF202107AF004118FC /* AppDelegate.swift */,
-				99579EC1202107AF004118FC /* ViewController.swift */,
+				99579EC1202107AF004118FC /* CategoryViewController.swift */,
 				99579EC3202107AF004118FC /* Main.storyboard */,
 				99579EC9202107AF004118FC /* Assets.xcassets */,
 				99579ECB202107AF004118FC /* LaunchScreen.storyboard */,
@@ -140,7 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99579EC8202107AF004118FC /* zuTun.xcdatamodeld in Sources */,
-				99579EC2202107AF004118FC /* ViewController.swift in Sources */,
+				99579EC2202107AF004118FC /* CategoryViewController.swift in Sources */,
 				99579EC0202107AF004118FC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,11 +281,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHSS2N99PV;
 				INFOPLIST_FILE = zuTun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sf4hmi.zuTun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -296,11 +297,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MHSS2N99PV;
 				INFOPLIST_FILE = zuTun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sf4hmi.zuTun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
