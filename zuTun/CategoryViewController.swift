@@ -13,13 +13,14 @@ class CategoryViewController: UITableViewController {
 
     var categoryArray = [Category]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let sortDescriptor = [NSSortDescriptor(key: "name", ascending: true)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tableView.rowHeight = 60.0
         //addInitialCategories()
-        loadCategory()
+        loadCategory(sorter: sortDescriptor)
     }
     
     // MARK:- TableView Datasource Methods
@@ -60,15 +61,24 @@ class CategoryViewController: UITableViewController {
         } catch {
             print("Saving categories failed!: \(error)")
         }
-        tableView.reloadData()
+        loadCategory(sorter: sortDescriptor)
     }
     
-    func loadCategory(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
+    func loadCategory(with request: NSFetchRequest<Category> = Category.fetchRequest(), predicate: NSPredicate? = nil, sorter: [NSSortDescriptor]? = nil) {
+        if let additionalPredicate = predicate {
+            request.predicate = additionalPredicate
+        }
+        
+        if let additionalSorter = sorter {
+            request.sortDescriptors = additionalSorter
+        }
+        
         do {
             categoryArray = try context.fetch(request)
         } catch {
             print("Loading categories failed!: \(error)")
         }
+        tableView.reloadData()
     }
     
     // MARK:- Additional Control Methods
