@@ -23,7 +23,7 @@ class CategoryViewController: UITableViewController {
         loadCategory(sorter: sortDescriptor)
     }
     
-    // MARK:- TableView Datasource Methods
+    // MARK:- Table View Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryArray.count
     }
@@ -36,7 +36,7 @@ class CategoryViewController: UITableViewController {
         return cell
     }
     
-    // MARK:- TableView Delegate Methods
+    // MARK:- Table View Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -106,6 +106,31 @@ class CategoryViewController: UITableViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK:- Search Bar
+extension CategoryViewController: UISearchBarDelegate {
+    // MARK:- Search Bar Delegate Methods
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchedCategory = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+        
+        loadCategory(predicate: searchedCategory, sorter: sortDescriptor)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadCategory(sorter: sortDescriptor)
+        searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchedCategory = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+        
+        loadCategory(predicate: searchedCategory, sorter: sortDescriptor)
+        
+        if searchBar.text?.count == 0 {
+            loadCategory(sorter: sortDescriptor)
+        }
     }
 }
 
