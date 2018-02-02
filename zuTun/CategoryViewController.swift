@@ -19,6 +19,7 @@ class CategoryViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tableView.rowHeight = 60.0
+        navigationItem.leftBarButtonItem = editButtonItem
         //addInitialCategories()
         loadCategory(sorter: sortDescriptor)
     }
@@ -121,6 +122,14 @@ extension CategoryViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadCategory(sorter: sortDescriptor)
         searchBar.endEditing(true)
+        searchBar.text = nil
+        searchBar.setShowsCancelButton(false, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
