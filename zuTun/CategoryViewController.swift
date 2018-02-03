@@ -15,11 +15,14 @@ class CategoryViewController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let sortDescriptor = [NSSortDescriptor(key: "name", ascending: true)]
     
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tableView.rowHeight = 60.0
         navigationItem.leftBarButtonItem = editButtonItem
+        deleteButton.isEnabled = false
         //addInitialCategories()
         loadCategory(sorter: sortDescriptor)
     }
@@ -31,7 +34,7 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
-        
+        tableView.insertRows(at: [indexPath], with: .fade)
         cell.textLabel?.text = categoryArray[indexPath.row].name
         
         return cell
@@ -39,7 +42,24 @@ class CategoryViewController: UITableViewController {
     
     // MARK:- Table View Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        if tableView.isEditing {
+            deleteButton.isEnabled = true
+            categoryArray[indexPath.row].toDelete = true
+        } else {
+            deleteButton.isEnabled = false
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    // TODO:- Still needs to figure out how best to rearrange
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let category = categoryArray[sourceIndexPath.row]
+        categoryArray.remove(at: sourceIndexPath.row)
+        categoryArray.insert(category, at: destinationIndexPath.row)
     }
     
     // MARK:- Test Methods
@@ -82,6 +102,19 @@ class CategoryViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func deleteCategory() {
+        for (index, category) in categoryArray.enumerated() {
+            if category.toDelete {
+                context.delete(category)
+                categoryArray.remove(at: index)
+                saveCategory()
+            }
+        }
+        deleteButton.isEnabled = false
+        tableView.isEditing = false
+    }
+    
+    
     // MARK:- Additional Control Methods
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
@@ -91,6 +124,7 @@ class CategoryViewController: UITableViewController {
             if let enteredCategoryName = textField.text {
                 if !enteredCategoryName.isEmpty {
                     newCategory.name = enteredCategoryName
+                    newCategory.toDelete = false
                     
                     self.categoryArray.append(newCategory)
                     self.saveCategory()
@@ -107,6 +141,10 @@ class CategoryViewController: UITableViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
+        deleteCategory()
     }
 }
 

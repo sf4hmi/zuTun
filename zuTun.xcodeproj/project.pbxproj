@@ -24,6 +24,7 @@
 		99579EC9202107AF004118FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99579ECC202107AF004118FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99579ECE202107AF004118FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99DE027420251ECD00D19B7C /* zuTun v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "zuTun v2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,9 +334,10 @@
 		99579EC6202107AF004118FC /* zuTun.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				99DE027420251ECD00D19B7C /* zuTun v2.xcdatamodel */,
 				99579EC7202107AF004118FC /* zuTun.xcdatamodel */,
 			);
-			currentVersion = 99579EC7202107AF004118FC /* zuTun.xcdatamodel */;
+			currentVersion = 99DE027420251ECD00D19B7C /* zuTun v2.xcdatamodel */;
 			path = zuTun.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
