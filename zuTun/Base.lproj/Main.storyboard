@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,7 +27,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="R7d-2z-96s">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="R7d-2z-96s" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R7d-2z-96s" id="UgP-II-gFJ">
@@ -43,22 +42,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Category" id="1qJ-rg-Gc7">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="yeY-SV-12O">
-                                <connections>
-                                    <action selector="addButtonPressed:" destination="Oof-r0-Pmg" id="PYM-3h-HEL"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="trash" id="byB-jd-Cih">
-                                <connections>
-                                    <action selector="deleteButtonPressed:" destination="Oof-r0-Pmg" id="pab-NU-WHd"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yeY-SV-12O">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="Oof-r0-Pmg" id="PYM-3h-HEL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="deleteButton" destination="byB-jd-Cih" id="No4-9a-kda"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5p-a6-1yN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
