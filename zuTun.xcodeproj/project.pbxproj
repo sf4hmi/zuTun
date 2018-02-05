@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991CDCA42028FA1E00E75C28 /* EditNewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991CDCA32028FA1E00E75C28 /* EditNewCategoryViewController.swift */; };
 		99579EC0202107AF004118FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99579EBF202107AF004118FC /* AppDelegate.swift */; };
 		99579EC2202107AF004118FC /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99579EC1202107AF004118FC /* CategoryViewController.swift */; };
 		99579EC5202107AF004118FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99579EC3202107AF004118FC /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		64E75A2B9E3E466912BE6A41 /* Pods-zuTun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zuTun.release.xcconfig"; path = "Pods/Target Support Files/Pods-zuTun/Pods-zuTun.release.xcconfig"; sourceTree = "<group>"; };
+		991CDCA32028FA1E00E75C28 /* EditNewCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNewCategoryViewController.swift; sourceTree = "<group>"; };
 		99579EBC202107AF004118FC /* zuTun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zuTun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99579EBF202107AF004118FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99579EC1202107AF004118FC /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				99579EC1202107AF004118FC /* CategoryViewController.swift */,
 				9965FE8C2027B21E009E457F /* SwipeTableViewController.swift */,
+				991CDCA32028FA1E00E75C28 /* EditNewCategoryViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				991CDCA42028FA1E00E75C28 /* EditNewCategoryViewController.swift in Sources */,
 				9965FE8D2027B21E009E457F /* SwipeTableViewController.swift in Sources */,
 				99579EC2202107AF004118FC /* CategoryViewController.swift in Sources */,
 				99579EC0202107AF004118FC /* AppDelegate.swift in Sources */,

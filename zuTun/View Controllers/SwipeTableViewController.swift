@@ -24,20 +24,35 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-        
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            self.updateModel(at: indexPath)
+        var swipeAction = [SwipeAction]()
+        if orientation == .right {
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+                self.updateModel(at: indexPath)
+            }
+            swipeAction.append(deleteAction)
+        }
+
+        if orientation == .left {
+            let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
+
+            }
+            swipeAction.append(editAction)
         }
         
-        return [deleteAction]
+        return swipeAction
     }
     
     // If you override this method, do not reload the tableView anymore
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
         var options = SwipeTableOptions()
-        options.expansionStyle = .destructive
-        options.transitionStyle = .border
+        if orientation == .right {
+            options.expansionStyle = .destructive
+            options.transitionStyle = .border
+        }
+        if orientation == .left {
+            options.expansionStyle = .fill
+            options.transitionStyle = .border
+        }
         return options
     }
     

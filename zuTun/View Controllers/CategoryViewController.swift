@@ -70,28 +70,29 @@ class CategoryViewController: SwipeTableViewController {
     
     // MARK:- Additional Control Methods
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        var textField = UITextField()
-        let alert = UIAlertController(title: "New category", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newCategory = Category()
-            if let enteredCategoryName = textField.text {
-                if !enteredCategoryName.isEmpty {
-                    newCategory.name = enteredCategoryName
-                    
-                    self.saveCategory(category: newCategory)
-                }
-            }
-        }
-        
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Category title"
-            alertTextField.autocapitalizationType = .words
-            textField = alertTextField
-        }
-        
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
+//        var textField = UITextField()
+//        let alert = UIAlertController(title: "New category", message: "", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+//            let newCategory = Category()
+//            if let enteredCategoryName = textField.text {
+//                if !enteredCategoryName.isEmpty {
+//                    newCategory.name = enteredCategoryName
+//
+//                    self.saveCategory(category: newCategory)
+//                }
+//            }
+//        }
+//
+//        alert.addTextField { (alertTextField) in
+//            alertTextField.placeholder = "Category title"
+//            alertTextField.autocapitalizationType = .words
+//            textField = alertTextField
+//        }
+//
+//        alert.addAction(action)
+//
+//        present(alert, animated: true, completion: nil)
+        performSegue(withIdentifier: "goToEditNewCategory", sender: self)
     }
 }
 

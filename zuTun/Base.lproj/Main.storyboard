@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,10 +49,36 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="KzE-a5-qR7" kind="presentation" identifier="goToEditNewCategory" id="1Yf-P2-CCU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5p-a6-1yN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1104.8" y="115.59220389805098"/>
+        </scene>
+        <!--Edit New Category View Controller-->
+        <scene sceneID="1Az-ji-S9y">
+            <objects>
+                <viewController id="6Zy-xl-1x5" customClass="EditNewCategoryViewController" customModule="zuTun" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1AL-Tq-0pp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="PGj-wJ-t4S"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RA9-3A-xUl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="T8f-8L-P5e">
+                            <connections>
+                                <action selector="cancelPressed:" destination="6Zy-xl-1x5" id="590-YQ-5tU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="foE-7I-b57"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YBX-nP-aeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2639.1999999999998" y="115.59220389805098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lwa-Mp-8XL">
@@ -71,6 +98,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NmH-EY-hQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="386" y="116"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pOk-tr-pXD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KzE-a5-qR7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FIy-tI-0Et">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Zy-xl-1x5" kind="relationship" relationship="rootViewController" id="3bw-ty-gq8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o7p-1W-amY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1879" y="116"/>
         </scene>
     </scenes>
 </document>
