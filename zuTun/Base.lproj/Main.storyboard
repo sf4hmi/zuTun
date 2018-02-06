@@ -64,6 +64,18 @@
                     <view key="view" contentMode="scaleToFill" id="1AL-Tq-0pp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aWT-wz-6ox">
+                                <rect key="frame" x="16" y="108" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6Zy-xl-1x5" id="tSf-97-KJf"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PGj-wJ-t4S"/>
                     </view>
@@ -73,10 +85,19 @@
                                 <action selector="cancelPressed:" destination="6Zy-xl-1x5" id="590-YQ-5tU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="foE-7I-b57"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="foE-7I-b57">
+                            <connections>
+                                <segue destination="O2g-CU-mbr" kind="unwind" unwindAction="unwindToCategoryListWithSender:" id="ukB-26-kUE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="foE-7I-b57" id="0i6-Dc-kl5"/>
+                        <outlet property="titleTextField" destination="aWT-wz-6ox" id="ay9-qq-cSg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YBX-nP-aeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="O2g-CU-mbr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2639.1999999999998" y="115.59220389805098"/>
         </scene>

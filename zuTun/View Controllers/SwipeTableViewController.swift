@@ -15,7 +15,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         super.viewDidLoad()
     }
     
-    // MARK:- TableView Datasource Methods
+    // MARK:- TABLEVIEW DATASOURCE METHODS
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeTableViewCell
         cell.delegate = self
@@ -34,7 +34,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
 
         if orientation == .left {
             let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
-
+                self.editModel()
             }
             swipeAction.append(editAction)
         }
@@ -57,6 +57,10 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     }
     
     func updateModel(at indexPath: IndexPath) {
+        // Override this method in child class
+    }
+    
+    func editModel() {
         // Override this method in child class
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		991CDCA42028FA1E00E75C28 /* EditNewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991CDCA32028FA1E00E75C28 /* EditNewCategoryViewController.swift */; };
+		991CDCA6202A4E0900E75C28 /* CategoryTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991CDCA5202A4E0900E75C28 /* CategoryTitleTableViewCell.swift */; };
 		99579EC0202107AF004118FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99579EBF202107AF004118FC /* AppDelegate.swift */; };
 		99579EC2202107AF004118FC /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99579EC1202107AF004118FC /* CategoryViewController.swift */; };
 		99579EC5202107AF004118FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99579EC3202107AF004118FC /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		64E75A2B9E3E466912BE6A41 /* Pods-zuTun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zuTun.release.xcconfig"; path = "Pods/Target Support Files/Pods-zuTun/Pods-zuTun.release.xcconfig"; sourceTree = "<group>"; };
 		991CDCA32028FA1E00E75C28 /* EditNewCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNewCategoryViewController.swift; sourceTree = "<group>"; };
+		991CDCA5202A4E0900E75C28 /* CategoryTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTitleTableViewCell.swift; sourceTree = "<group>"; };
 		99579EBC202107AF004118FC /* zuTun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zuTun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99579EBF202107AF004118FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99579EC1202107AF004118FC /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		991CDCA7202A4E3100E75C28 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				991CDCA5202A4E0900E75C28 /* CategoryTitleTableViewCell.swift */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 		99579EB3202107AF004118FC = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +94,7 @@
 		99579EBE202107AF004118FC /* zuTun */ = {
 			isa = PBXGroup;
 			children = (
+				991CDCA7202A4E3100E75C28 /* Custom Cell */,
 				9965FE892027AD57009E457F /* View Controllers */,
 				9965FE882027AD49009E457F /* Data Model */,
 				99579EBF202107AF004118FC /* AppDelegate.swift */,
@@ -226,12 +237,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-zuTun/Pods-zuTun-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +261,7 @@
 			files = (
 				991CDCA42028FA1E00E75C28 /* EditNewCategoryViewController.swift in Sources */,
 				9965FE8D2027B21E009E457F /* SwipeTableViewController.swift in Sources */,
+				991CDCA6202A4E0900E75C28 /* CategoryTitleTableViewCell.swift in Sources */,
 				99579EC2202107AF004118FC /* CategoryViewController.swift in Sources */,
 				99579EC0202107AF004118FC /* AppDelegate.swift in Sources */,
 				9965FE8B2027ADED009E457F /* Category.swift in Sources */,

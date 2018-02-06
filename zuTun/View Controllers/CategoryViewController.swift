@@ -21,7 +21,7 @@ class CategoryViewController: SwipeTableViewController {
         loadCategory()
     }
     
-    // MARK:- Table View Datasource Methods
+    // MARK:- TABLE VIEW DATASOURCE METHODS
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories?.count ?? 1
     }
@@ -38,7 +38,7 @@ class CategoryViewController: SwipeTableViewController {
         return cell
     }
     
-    // MARK:- Data Manipulation Methods
+    // MARK:- DATA MANIPULATION METHODS
     func saveCategory(category: Category) {
         do {
             try realm.write {
@@ -68,37 +68,26 @@ class CategoryViewController: SwipeTableViewController {
         }
     }
     
-    // MARK:- Additional Control Methods
+    override func editModel() {
+        <#code#>
+    }
+    
+    // MARK:- ADDITIONAL CONTROL METHODS
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-//        var textField = UITextField()
-//        let alert = UIAlertController(title: "New category", message: "", preferredStyle: .alert)
-//        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-//            let newCategory = Category()
-//            if let enteredCategoryName = textField.text {
-//                if !enteredCategoryName.isEmpty {
-//                    newCategory.name = enteredCategoryName
-//
-//                    self.saveCategory(category: newCategory)
-//                }
-//            }
-//        }
-//
-//        alert.addTextField { (alertTextField) in
-//            alertTextField.placeholder = "Category title"
-//            alertTextField.autocapitalizationType = .words
-//            textField = alertTextField
-//        }
-//
-//        alert.addAction(action)
-//
-//        present(alert, animated: true, completion: nil)
         performSegue(withIdentifier: "goToEditNewCategory", sender: self)
+    }
+    
+    // MARK:- NAVIGATION
+    @IBAction func unwindToCategoryList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? EditNewCategoryViewController, let category = sourceViewController.category {
+            saveCategory(category: category)
+        }
     }
 }
 
-// MARK:- Search Bar
+// MARK:- SEARCH BAR
 extension CategoryViewController: UISearchBarDelegate {
-    // MARK:- Search Bar Delegate Methods
+    // MARK:- SEARCH BAR DELEGATE METHODS
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadCategory()
         searchBar.endEditing(true)
