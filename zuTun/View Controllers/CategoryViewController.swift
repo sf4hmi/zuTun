@@ -8,15 +8,16 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
+import os.log
 
-class CategoryViewController: SwipeTableViewController {
+class CategoryViewController: UITableViewController, SwipeTableViewCellDelegate {
 
     var categories: Results<Category>?
     let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         tableView.rowHeight = 60.0
         loadCategory()
     }
@@ -27,7 +28,8 @@ class CategoryViewController: SwipeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeTableViewCell
+        cell.delegate = self
         
         if let category = categories?[indexPath.row] {
             cell.textLabel?.text = category.name
@@ -36,6 +38,40 @@ class CategoryViewController: SwipeTableViewController {
         }
         
         return cell
+    }
+    
+    // MARK:- TABLE VIEW CELL DELEGATE METHODS
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        var swipeAction = [SwipeAction]()
+        if orientation == .right {
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+                self.deleteEntry(at: indexPath)
+            }
+            swipeAction.append(deleteAction)
+        }
+        
+        if orientation == .left {
+            let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
+                self.editEntry(at: indexPath)
+            }
+            swipeAction.append(editAction)
+        }
+        
+        return swipeAction
+    }
+    
+    // If you override this method, do not reload the tableView anymore
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        if orientation == .right {
+            options.expansionStyle = .destructive
+            options.transitionStyle = .border
+        }
+        if orientation == .left {
+            options.expansionStyle = .fill
+            options.transitionStyle = .border
+        }
+        return options
     }
     
     // MARK:- DATA MANIPULATION METHODS
@@ -56,7 +92,7 @@ class CategoryViewController: SwipeTableViewController {
     }
     
     // Delete data from Swipe
-    override func updateModel(at indexPath: IndexPath) {
+    func deleteEntry(at indexPath: IndexPath) {
         if let deletedCategory = categories?[indexPath.row] {
             do {
                 try realm.write {
@@ -68,19 +104,57 @@ class CategoryViewController: SwipeTableViewController {
         }
     }
     
-    override func editModel() {
-        <#code#>
+    func editEntry(at indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToEditCategory", sender: indexPath)
+        loadCategory()
     }
     
     // MARK:- ADDITIONAL CONTROL METHODS
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goToEditNewCategory", sender: self)
+        performSegue(withIdentifier: "goToNewCategory", sender: self)
     }
     
     // MARK:- NAVIGATION
     @IBAction func unwindToCategoryList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? EditNewCategoryViewController, let category = sourceViewController.category {
-            saveCategory(category: category)
+        if let sourceViewController = sender.source as? EditNewCategoryViewController, let newCategory = sourceViewController.category {
+            let selectedIndex = sourceViewController.editIndex
+            if selectedIndex >= 0  {
+                if let editedCategory = categories?[selectedIndex] {
+                    do {
+                        try realm.write {
+                            editedCategory.name = newCategory.name
+                        }
+                    } catch {
+                        print("Saving data failed! => \(error)")
+                    }
+                    loadCategory()
+                }
+            } else {
+                saveCategory(category: newCategory)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch (segue.identifier ?? "") {
+            case "goToNewCategory":
+                os_log("Adding a new category.", log: OSLog.default, type: .debug)
+            case "goToEditCategory":
+                guard let editCategoryViewController = segue.destination as? EditNewCategoryViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                guard let indexPath = sender as? IndexPath else {
+                    fatalError("The selected cell is not being displayed by the table")
+                }
+                if let editedCategory = categories?[indexPath.row] {
+                    editCategoryViewController.category = editedCategory
+                    editCategoryViewController.editIndex = indexPath.row
+                }
+                editCategoryViewController.navigationItem.title = "Edit Category"
+            default:
+                fatalError("Unexpected Segue Identifier; \(segue.identifier!)")
         }
     }
 }
@@ -111,4 +185,3 @@ extension CategoryViewController: UISearchBarDelegate {
         }
     }
 }
-

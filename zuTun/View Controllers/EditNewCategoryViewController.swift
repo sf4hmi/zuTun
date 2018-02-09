@@ -17,9 +17,13 @@ class EditNewCategoryViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     
     var category: Category?
+    var editIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let category = category {
+            titleTextField.text = category.name
+        }
         updateSaveButton()
     }
     
@@ -46,7 +50,15 @@ class EditNewCategoryViewController: UIViewController {
     }
     
     @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        let isPresentingInAddCategoryMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddCategoryMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The EditNewCategoryViewController is not inside a navigation controller.")
+        }
     }
 }
 

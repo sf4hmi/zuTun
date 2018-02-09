@@ -15,7 +15,6 @@
 		99579ECA202107AF004118FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99579EC9202107AF004118FC /* Assets.xcassets */; };
 		99579ECD202107AF004118FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99579ECB202107AF004118FC /* LaunchScreen.storyboard */; };
 		9965FE8B2027ADED009E457F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965FE8A2027ADED009E457F /* Category.swift */; };
-		9965FE8D2027B21E009E457F /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965FE8C2027B21E009E457F /* SwipeTableViewController.swift */; };
 		D648127C463CCE720E56FA4C /* Pods_zuTun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CB90D33A069765588B02A5 /* Pods_zuTun.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +30,6 @@
 		99579ECC202107AF004118FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99579ECE202107AF004118FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9965FE8A2027ADED009E457F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		9965FE8C2027B21E009E457F /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		D1CB90D33A069765588B02A5 /* Pods_zuTun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zuTun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDC30DBF58878B6E0EC5AB3 /* Pods-zuTun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zuTun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zuTun/Pods-zuTun.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				99579EC1202107AF004118FC /* CategoryViewController.swift */,
-				9965FE8C2027B21E009E457F /* SwipeTableViewController.swift */,
 				991CDCA32028FA1E00E75C28 /* EditNewCategoryViewController.swift */,
 			);
 			path = "View Controllers";
@@ -260,7 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				991CDCA42028FA1E00E75C28 /* EditNewCategoryViewController.swift in Sources */,
-				9965FE8D2027B21E009E457F /* SwipeTableViewController.swift in Sources */,
 				991CDCA6202A4E0900E75C28 /* CategoryTitleTableViewCell.swift in Sources */,
 				99579EC2202107AF004118FC /* CategoryViewController.swift in Sources */,
 				99579EC0202107AF004118FC /* AppDelegate.swift in Sources */,
