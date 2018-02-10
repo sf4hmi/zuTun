@@ -35,9 +35,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="6Zy-xl-1x5" kind="show" identifier="goToEditCategory" id="hEu-nr-hnZ"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -54,6 +51,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="M81-C8-c4Z" kind="presentation" identifier="goToNewCategory" id="uql-ts-gww"/>
+                        <segue destination="6Zy-xl-1x5" kind="show" identifier="goToEditCategory" id="xOh-m9-TEM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5p-a6-1yN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,6 +142,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hEu-nr-hnZ"/>
+        <segue reference="xOh-m9-TEM"/>
     </inferredMetricsTieBreakers>
 </document>

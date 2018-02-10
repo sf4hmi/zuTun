@@ -40,6 +40,10 @@ class CategoryViewController: UITableViewController, SwipeTableViewCellDelegate 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK:- TABLE VIEW CELL DELEGATE METHODS
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         var swipeAction = [SwipeAction]()
@@ -106,6 +110,11 @@ class CategoryViewController: UITableViewController, SwipeTableViewCellDelegate 
     
     func editEntry(at indexPath: IndexPath) {
         performSegue(withIdentifier: "goToEditCategory", sender: indexPath)
+        loadCategory()
+    }
+    
+    // Archive
+    func hideEntry(at indexPath: IndexPath) {
         loadCategory()
     }
     
